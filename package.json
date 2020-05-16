@@ -118,6 +118,8 @@
       "test/**/*.test.ts?(x)"
     ],
     "require": [
+      "ignore-styles",
+      "esm",
       "ts-node/register",
       "tsconfig-paths/register"
     ]
@@ -130,6 +132,7 @@
     "react-dom": "^16.13.1"
   },
   "devDependencies": {
+    "@ava/babel": "^1.0.1",
     "@types/react": "^16.9.35",
     "@types/sinon": "^9.0.1",
     "@typescript-eslint/eslint-plugin": "^2.33.0",
