@@ -4,7 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npm-run-all test:*",
+    "test:tsc": "tsc --noEmit",
+    "test:lint": "xo --fix",
+    "test:unit": "ava",
+    "lint:staged": "lint-staged"
   },
   "repository": {
     "type": "git",
@@ -15,5 +19,144 @@
   "bugs": {
     "url": "https://github.com/kolyaventuri/amplify-template/issues"
   },
-  "homepage": "https://github.com/kolyaventuri/amplify-template#readme"
+  "homepage": "https://github.com/kolyaventuri/amplify-template#readme",
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm-run-all test:tsc lint:staged"
+    }
+  },
+  "lint-staged": {
+    "*": [
+      "xo --fix"
+    ]
+  },
+  "xo": {
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+      "project": [
+        "./tsconfig.json"
+      ]
+    },
+    "extends": [
+      "xo-typescript",
+      "plugin:@typescript-eslint/recommended"
+    ],
+    "extensions": [
+      "ts"
+    ],
+    "space": true,
+    "prettier": true,
+    "compilerOptions": {
+      "strict": true
+    },
+    "rules": {
+      "@typescript-eslint/camelcase": 0,
+      "@typescript-eslint/member-naming": [
+        "error",
+        {
+          "private": "^__",
+          "protected": "^_"
+        }
+      ],
+      "indent": 0,
+      "@typescript-eslint/indent": [
+        "error",
+        2
+      ],
+      "@typescript-eslint/no-explicit-any": 0,
+      "@typescript-eslint/no-unused-vars": [
+        "error"
+      ],
+      "@typescript-eslint/prefer-readonly-parameter-types": 0
+    },
+    "overrides": [
+      {
+        "files": "test/**/*.ts",
+        "rules": {
+          "@typescript-eslint/explicit-function-return-type": 0,
+          "@typescript-eslint/prefer-readonly-parameter-types": 0,
+          "@typescript-eslint/no-unsafe-call": 0
+        }
+      },
+      {
+        "files": "src/utils/run-warm.ts",
+        "rules": {
+          "@typescript-eslint/explicit-function-return-type": 0
+        }
+      },
+      {
+        "files": "src/db/**/*.ts",
+        "rules": {
+          "new-cap": 0
+        }
+      }
+    ],
+    "env": [
+      "node"
+    ],
+    "include": [
+      "**/*.ts?(x)"
+    ],
+    "ignore": [
+      "**/*.js",
+      "scripts/**/*",
+      "templates/**/*"
+    ]
+  },
+  "ava": {
+    "babel": {
+      "compileEnhancements": false,
+      "compileAsTests": [
+        "test/helpers/**/*.ts"
+      ]
+    },
+    "extensions": [
+      "ts",
+      "tsx"
+    ],
+    "files": [
+      "test/**/*.test.ts?(x)"
+    ],
+    "require": [
+      "ts-node/register",
+      "tsconfig-paths/register"
+    ]
+  },
+  "dependencies": {
+    "@zeit/next-sass": "^1.0.1",
+    "next": "^9.4.1",
+    "node-sass": "^4.14.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.35",
+    "@types/sinon": "^9.0.1",
+    "@typescript-eslint/eslint-plugin": "^2.33.0",
+    "@typescript-eslint/parser": "^2.33.0",
+    "ava": "^3.8.2",
+    "browser-env": "^3.3.0",
+    "cross-env": "^7.0.2",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
+    "eslint": "^7.0.0",
+    "eslint-config-xo": "^0.29.1",
+    "eslint-config-xo-react": "^0.23.0",
+    "eslint-config-xo-typescript": "^0.29.0",
+    "eslint-plugin-react": "^7.20.0",
+    "eslint-plugin-react-hooks": "^4.0.2",
+    "esm": "^3.2.25",
+    "husky": "^4.2.5",
+    "ignore-styles": "^5.0.1",
+    "lint-staged": "^10.2.2",
+    "npm-run-all": "^4.1.5",
+    "proxyquire": "^2.1.3",
+    "sinon": "^9.0.2",
+    "stylelint": "^13.3.3",
+    "stylelint-config-recommended": "^3.0.0",
+    "ts-node": "^8.10.1",
+    "tsconfig-paths": "^3.9.0",
+    "typescript": "^3.9.2",
+    "xo": "^0.30.0"
+  }
 }
