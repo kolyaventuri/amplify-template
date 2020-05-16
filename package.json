@@ -4,11 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npm-run-all test:*",
-    "test:tsc": "tsc --noEmit",
-    "test:lint": "xo --fix",
-    "test:unit": "ava",
-    "lint:staged": "lint-staged"
+    "start": "next start",
+    "test": "npm-run-all lint:* test:*",
+    "test:unit": "cross-env TS_NODE_PROJECT=tsconfig.ava.json ava",
+    "lint:tsc": "tsc --noEmit",
+    "lint:lint": "xo --fix",
+    "lint:style": "stylelint src/styles/**/*.scss",
+    "dev": "cross-env ENV=local next -p 4000",
+    "build:files": "next build",
+    "build:export": "next export",
+    "build": "npm-run-all build:*"
   },
   "repository": {
     "type": "git",
@@ -22,7 +27,7 @@
   "homepage": "https://github.com/kolyaventuri/amplify-template#readme",
   "husky": {
     "hooks": {
-      "pre-commit": "npm-run-all test:tsc lint:staged"
+      "pre-commit": "npm-run-all lint:* && lint-staged"
     }
   },
   "lint-staged": {
@@ -39,7 +44,8 @@
     },
     "extends": [
       "xo-typescript",
-      "plugin:@typescript-eslint/recommended"
+      "plugin:@typescript-eslint/recommended",
+      "xo-react/space"
     ],
     "extensions": [
       "ts"
@@ -71,7 +77,7 @@
     },
     "overrides": [
       {
-        "files": "test/**/*.ts",
+        "files": "test/**/*.ts?(x)",
         "rules": {
           "@typescript-eslint/explicit-function-return-type": 0,
           "@typescript-eslint/prefer-readonly-parameter-types": 0,
@@ -79,18 +85,17 @@
         }
       },
       {
-        "files": "src/utils/run-warm.ts",
+        "files": "src/**/*.ts?(x)",
         "rules": {
-          "@typescript-eslint/explicit-function-return-type": 0
-        }
-      },
-      {
-        "files": "src/db/**/*.ts",
-        "rules": {
-          "new-cap": 0
+          "import/no-unassigned-import": 0
         }
       }
     ],
+    "settings": {
+      "react": {
+        "version": "16.5"
+      }
+    },
     "env": [
       "node"
     ],
@@ -98,9 +103,7 @@
       "**/*.ts?(x)"
     ],
     "ignore": [
-      "**/*.js",
-      "scripts/**/*",
-      "templates/**/*"
+      "**/*.js"
     ]
   },
   "ava": {
@@ -121,7 +124,8 @@
       "ignore-styles",
       "esm",
       "ts-node/register",
-      "tsconfig-paths/register"
+      "tsconfig-paths/register",
+      "./test/helpers/setup-enzyme.ts"
     ]
   },
   "dependencies": {
@@ -157,6 +161,7 @@
     "sinon": "^9.0.2",
     "stylelint": "^13.3.3",
     "stylelint-config-recommended": "^3.0.0",
+    "stylelint-scss": "^3.17.2",
     "ts-node": "^8.10.1",
     "tsconfig-paths": "^3.9.0",
     "typescript": "^3.9.2",
