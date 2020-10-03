@@ -6,6 +6,7 @@
       "dom.iterable",
       "esnext"
     ],
+    "downlevelIteration": true,
     "allowJs": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
@@ -21,14 +22,18 @@
     "noUnusedParameters": true,
     "noImplicitAny": false,
     "baseUrl": ".",
-    "module": "esnext"
+    "module": "esnext",
+    "typeRoots": [
+      "./src/@types",
+      "./node_modules/@types"
+    ]
   },
   "exclude": [
     "node_modules",
-    "test/**/*"
+    "webpack"
   ],
   "include": [
-    "next-env.d.ts",
-    "src/**/*"
+    "src",
+    "test"
   ]
 }
