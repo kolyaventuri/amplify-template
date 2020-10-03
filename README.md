@@ -22,7 +22,8 @@ Run fast with a new [AWS Amplify](https://aws.amazon.com/amplify/) project using
 1) Create a new repository using this as a template
 2) `npm i` to get the dependencies installed
 3) Modify the `package.json` and this readme to fit your project
-4) Run the local build with `npm start`!
+4) Run the local build with `npm run dev`! (App will start on port `4000`)
+5) Deploy your app on Amplify! See their [docs](https://docs.amplify.aws/) for more information on your specific deployment strategy.
 
 # Q + A
 ### Why AVA? Why not Jest?
