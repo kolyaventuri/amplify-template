@@ -1,2 +1,3 @@
-import * as next from 'next';
-import * as nextGloal from 'next/types/global';
+/// <reference types="next" />
+/// <reference types="next/types/global" />
+/// <reference types="next/image-types/global" />
