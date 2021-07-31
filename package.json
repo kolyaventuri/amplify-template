@@ -7,6 +7,7 @@
     "start": "next start",
     "test": "npm-run-all lint:* test:*",
     "test:unit": "cross-env TS_NODE_PROJECT=tsconfig/tsconfig.ava.json ava",
+    "lint": "npm-run-all lint:*",
     "lint:tsc": "tsc --noEmit",
     "lint:lint": "xo --fix",
     "lint:style": "stylelint src/styles/**/*.scss",
@@ -25,13 +26,9 @@
     "url": "https://github.com/kolyaventuri/amplify-template/issues"
   },
   "homepage": "https://github.com/kolyaventuri/amplify-template#readme",
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm-run-all lint:* && lint-staged"
-    }
-  },
   "lint-staged": {
-    "*": [
+    "**/*.ts?(x)": [
+      "tsc --noEmit",
       "xo --fix"
     ]
   },
