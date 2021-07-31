@@ -30,6 +30,9 @@
     "**/*.ts?(x)": [
       "tsc --noEmit",
       "xo --fix"
+    ],
+    "**/*.scss": [
+      "stylelint"
     ]
   },
   "xo": {
