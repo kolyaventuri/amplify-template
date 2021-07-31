@@ -1,2 +1,2 @@
-/// <reference types="next" />
-/// <reference types="next/types/global" />
+import * as next from 'next';
+import * as nextGloal from 'next/types/global';
