@@ -1,8 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
 
-import '../styles/index.scss';
-
 class Home extends React.Component {
   render(): JSX.Element {
     return (

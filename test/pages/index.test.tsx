@@ -4,9 +4,7 @@ import {shallow} from 'enzyme';
 
 import Home from '../../src/pages';
 
-const getComponent = () => {
-  return shallow(<Home />);
-};
+const getComponent = () => shallow(<Home />);
 
 test('renders a head component', (t) => {
   const tree = getComponent();

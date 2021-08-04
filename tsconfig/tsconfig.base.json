@@ -17,15 +17,15 @@
     "isolatedModules": true,
     "allowSyntheticDefaultImports": true,
     "strict": true,
-    "jsx": "react",
+    "jsx": "preserve",
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitAny": false,
     "baseUrl": ".",
     "module": "esnext",
     "typeRoots": [
-      "./src/@types",
-      "./node_modules/@types"
+      "../@types",
+      "../node_modules/@types"
     ]
   },
   "exclude": [
