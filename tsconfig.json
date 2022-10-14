@@ -8,5 +8,8 @@
     "next-env.d.ts",
     "src",
     "test"
-  ]
+  ],
+  "compilerOptions": {
+    "incremental": true
+  }
 }

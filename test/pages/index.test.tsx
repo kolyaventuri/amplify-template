@@ -1,13 +1,11 @@
 import React from 'react';
 import test from 'ava';
-import {shallow} from 'enzyme';
+import {render, screen} from '@testing-library/react';
 
 import Home from '../../src/pages';
 
-const getComponent = () => shallow(<Home />);
+test('renders', (t) => {
+  render(<Home />);
 
-test('renders a head component', (t) => {
-  const tree = getComponent();
-
-  t.is(tree.find('Head').length, 1);
+  t.not(screen.getByText('Amplify App'), null);
 });

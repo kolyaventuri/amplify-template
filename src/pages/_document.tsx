@@ -1,12 +1,6 @@
 import * as React from 'react';
-import NextDoc, {
-  Html,
-  Head,
-  Main,
-  NextScript,
-  DocumentContext,
-  DocumentInitialProps,
-} from 'next/document';
+import type {DocumentContext, DocumentInitialProps} from 'next/document';
+import NextDoc, {Html, Head, Main, NextScript} from 'next/document';
 
 class Document extends NextDoc {
   static async getInitialProps(
