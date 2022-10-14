@@ -1,9 +1,7 @@
 {
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "project": [
-      "./tsconfig.json"
-    ]
+    "project": "./tsconfig.json"
   },
   "extends": [
     "xo-typescript",
@@ -19,6 +17,17 @@
     "strict": true
   },
   "rules": {
+    "react/no-unknown-property": ["error", { "ignore": ["jsx", "global"] }],
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ],
     "@typescript-eslint/camelcase": 0,
     "@typescript-eslint/naming-convention": [
       "error",
