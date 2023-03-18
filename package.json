@@ -15,7 +15,7 @@
     "build:files": "next build",
     "build:export": "next export",
     "build": "npm-run-all build:*",
-    "postinstall": "husky install"
+    // "postinstall": "husky install"
   },
   "repository": {
     "type": "git",
